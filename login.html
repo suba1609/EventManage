@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Chennai Govt 2026</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    html,
+    body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('eventreglog.avif') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    .navbar-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      color: #ffcc00 !important;
+    }
+
+    .nav-link {
+      color: white !important;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #ffcc00;
+      transition: 0.3s;
+      margin: auto;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .glass-card {
+      background: linear-gradient(135deg, rgba(255, 140, 0, 0.6), rgba(255, 0, 150, 0.5));
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: white;
+    }
+
+    .position-relative {
+      position: relative;
+    }
+
+    #forgotPasswordSection {
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid #00ffc8;
+      border-radius: 15px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    #forgotPasswordSection input {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid #00ffc8;
+      color: white;
+    }
+
+    #forgotPasswordSection input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    #forgotPasswordSection .btn {
+      background: linear-gradient(to right, #00c9ff, #92fe9d);
+      color: black;
+      font-weight: bold;
+    }
+
+    #forgotPasswordSection .btn:hover {
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: black;
+    }
+
+    #recoverySuccess {
+      color: #00ff95 !important;
+      font-weight: 500;
+    }
+
+    #recoveryFail {
+      color: #ff5555 !important;
+      font-weight: 500;
+    }
+
+    footer {
+      background: #000;
+      color: #aaa;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark px-3">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" width="40" height="25"
+        style="border-radius: 3px;">
+      <div>
+        <div style="font-size: 1.2rem;">GOVERNMENT EVENTS 2026</div>
+        <div style="font-size: 0.75rem;">CHENNAI</div>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+        <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Login Box -->
+    <div class="container mt-5 d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+      <div class="card glass-card" style="max-width: 450px; width: 100%;">
+        <div class="card-body">
+          <h3 class="text-center text-white mb-4">Login</h3>
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="username" class="form-label">Email Address</label>
+              <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="mb-3 position-relative">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" required>
+              <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('password', this)"></i>
+            </div>
+            <button type="submit" class="btn btn-warning w-100">Login</button>
+
+            <div class="text-center mt-3">
+              <a href="#" onclick="showForgotForm()" class="text-white text-decoration-none">Forgot Password?</a>
+            </div>
+          </form>
+
+          <div class="text-center mt-3 text-success d-none" id="loginSuccess">✅ Login successful! Redirecting...</div>
+          <div class="text-center mt-3 text-danger d-none" id="loginFail">❌ Invalid credentials.</div>
+
+          <!-- Forgot Password Section (inside login card) -->
+          <div id="forgotPasswordSection" class="d-none">
+            <h5 class="text-center mb-3" style="color: #00ffc8;">🔐 Recover Password</h5>
+            <div class="mb-2">
+              <input type="email" id="recoveryEmail" class="form-control" placeholder="Enter your registered email">
+            </div>
+            <div class="d-grid">
+              <button class="btn" onclick="recoverPassword()">Get Password</button>
+            </div>
+            <div class="mt-2 text-center d-none" id="recoverySuccess"></div>
+            <div class="mt-2 text-center d-none" id="recoveryFail">❌ Email not found.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Chennai Government Events Portal</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const savedEmail = localStorage.getItem('userEmail');
+      const savedPassword = localStorage.getItem('userPassword');
+      const savedEvent = localStorage.getItem('userEvent');
+
+      if (email === savedEmail && password === savedPassword) {
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('loggedInEvent', savedEvent);
+        document.getElementById('loginSuccess').classList.remove('d-none');
+        document.getElementById('loginFail').classList.add('d-none');
+        setTimeout(() => window.location.href = "welcome.html", 1500);
+      } else {
+        document.getElementById('loginFail').classList.remove('d-none');
+        document.getElementById('loginSuccess').classList.add('d-none');
+      }
+    });
+
+    function togglePassword(id, icon) {
+      const input = document.getElementById(id);
+      if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("bi-eye-slash");
+        icon.classList.add("bi-eye");
+      } else {
+        input.type = "password";
+        icon.classList.remove("bi-eye");
+        icon.classList.add("bi-eye-slash");
+      }
+    }
+
+    function showForgotForm() {
+      const section = document.getElementById('forgotPasswordSection');
+      section.classList.remove('d-none');
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function recoverPassword() {
+      const enteredEmail = document.getElementById('recoveryEmail').value;
+      const savedEmail = localStorage.getItem('userEmail');
+      const savedPassword = localStorage.getItem('userPassword');
+
+      if (enteredEmail === savedEmail) {
+        document.getElementById('recoverySuccess').innerText = `✅ Your password is: "${savedPassword}"`;
+        document.getElementById('recoverySuccess').classList.remove('d-none');
+        document.getElementById('recoveryFail').classList.add('d-none');
+      } else {
+        document.getElementById('recoveryFail').classList.remove('d-none');
+        document.getElementById('recoverySuccess').classList.add('d-none');
+      }
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

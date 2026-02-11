@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chennai Government Events 2026</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@500&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      color: #ffcc00 !important;
+    }
+
+    .nav-link {
+      color: white !important;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #ffcc00;
+      transition: 0.3s;
+      margin: auto;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .banner {
+      height: 100vh;
+      background: url('eventsindex1.webp') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .banner::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .banner-content h1 {
+      font-size: 3rem;
+      color: #ffcc00;
+    }
+
+    .banner-content p {
+      font-size: 1.2rem;
+      color: #eaeaea;
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-down a {
+      font-size: 2rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(10px);
+      }
+    }
+
+    .about-section {
+      padding: 60px 20px;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      text-align: center;
+    }
+
+    .info-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .info-card {
+      width: 280px;
+      padding: 20px;
+      border-radius: 12px;
+      color: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 30px rgba(255, 255, 255, 0.3);
+    }
+
+    .events-box {
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    }
+
+    .culture-box {
+      background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    }
+
+    .goals-box {
+      background: linear-gradient(135deg, #11998e, #38ef7d);
+    }
+
+    .initiatives-box {
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+    }
+
+    .contact {
+      background: #f46bdd;
+      color: rgb(0, 0, 0);
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .contact a {
+      color: #d9ff00;
+      text-decoration: none;
+    }
+
+    footer {
+      background: #000;
+      color: #aaa;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+ <!-- Transparent Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark px-3" style="background-color: rgba(0, 0, 0, 0.5);">
+  <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" width="40" height="25" style="border-radius: 3px;">
+    <div>
+      <div style="font-size: 1.2rem;">GOVERNMENT EVENTS 2026</div>
+      <div style="font-size: 0.75rem;">CHENNAI</div>
+    </div>
+  </a>
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+      <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+      <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+    </ul>
+
+    <form class="d-flex ms-3">
+      <input class="form-control form-control-sm me-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-light btn-sm" type="submit">
+        <i class="bi bi-search"></i>
+      </button>
+    </form>
+  </div>
+</nav>
+
+
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="banner-content">
+      <h1>Welcome to <span class="text-info">Chennai Govt Events</span></h1>
+      <p>Experience culture, tech, and community — all in one place.</p>
+    </div>
+
+    <!-- Scroll Down Arrow -->
+    <div class="scroll-down">
+      <a href="#about"><i class="bi bi-arrow-down-circle-fill"></i></a>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div id="about" class="about-section">
+    <h2>About Chennai Government Events</h2>
+    <div class="info-cards mt-4">
+      <div class="info-card events-box">
+        <h5>🎪 Events</h5>
+        <p>From tech expos to cultural parades, every event is curated to inspire, inform, and engage all age groups in
+          Chennai’s civic and creative life.</p>
+      </div>
+      <div class="info-card culture-box">
+        <h5>🏛️ Culture</h5>
+        <p>Our festivals honor Tamil Nadu’s rich heritage — with classical dance, folk music, art exhibits, and food
+          stalls that showcase local talent.</p>
+      </div>
+      <div class="info-card goals-box">
+        <h5>🎯 Goals</h5>
+        <p>Our mission is to strengthen community bonding, spread public awareness, and showcase Chennai’s role as a
+          progressive city of pride.</p>
+      </div>
+      <div class="info-card initiatives-box">
+        <h5>🛠️ Initiatives</h5>
+        <p>Events also launch cleanliness drives, green missions, digital empowerment workshops, and startup mentoring
+          programs.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contact">
+    <h4 class="mb-2">📞 Contact Us</h4>
+    <p>
+      <i class="bi bi-envelope-fill"></i> <a
+        href="mailto:govtevents2026chennai@gmail.com">govtevents2026chennai@gmail.com</a>
+    </p>
+    <p>
+      <i class="bi bi-telephone-fill"></i> <a href="tel:+919876543210">+91 98765 43210</a>
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Chennai Government Events Portal
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
